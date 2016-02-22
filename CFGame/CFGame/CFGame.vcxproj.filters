@@ -45,6 +45,18 @@
     <ClInclude Include="base\D3DApp.h">
       <Filter>app\base</Filter>
     </ClInclude>
+    <ClInclude Include="base\d3dUtil.h">
+      <Filter>app\base</Filter>
+    </ClInclude>
+    <ClInclude Include="base\d3dx11effect.h">
+      <Filter>app\base</Filter>
+    </ClInclude>
+    <ClInclude Include="base\LightHelper.h">
+      <Filter>app\base</Filter>
+    </ClInclude>
+    <ClInclude Include="base\MathHelper.h">
+      <Filter>app\base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -57,6 +69,15 @@
       <Filter>app\base</Filter>
     </ClCompile>
     <ClCompile Include="base\D3DApp.cpp">
+      <Filter>app\base</Filter>
+    </ClCompile>
+    <ClCompile Include="base\d3dUtil.cpp">
+      <Filter>app\base</Filter>
+    </ClCompile>
+    <ClCompile Include="base\LightHelper.cpp">
+      <Filter>app\base</Filter>
+    </ClCompile>
+    <ClCompile Include="base\MathHelper.cpp">
       <Filter>app\base</Filter>
     </ClCompile>
   </ItemGroup>
@@ -72,5 +93,13 @@
     <Image Include="CFGame.ico">
       <Filter>资源文件</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="base\Effects11.lib">
+      <Filter>app\base</Filter>
+    </Library>
+    <Library Include="base\Effects11d.lib">
+      <Filter>app\base</Filter>
+    </Library>
   </ItemGroup>
 </Project>

@@ -41,6 +41,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(DXSDK_DIR)Include;$(ProjectDir)base;$(IncludePath)</IncludePath>
+    <LibraryPath>$(DXSDK_DIR)Lib\x86;$(ProjectDir)base;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -56,6 +58,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>d3d11.lib;d3dx11d.lib;D3DCompiler.lib;Effects11d.lib;dxerr.lib;dxgi.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -81,6 +84,10 @@
   <ItemGroup>
     <ClInclude Include="base\Camera.h" />
     <ClInclude Include="base\D3DApp.h" />
+    <ClInclude Include="base\d3dUtil.h" />
+    <ClInclude Include="base\d3dx11effect.h" />
+    <ClInclude Include="base\LightHelper.h" />
+    <ClInclude Include="base\MathHelper.h" />
     <ClInclude Include="CFGame.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -89,6 +96,9 @@
   <ItemGroup>
     <ClCompile Include="base\Camera.cpp" />
     <ClCompile Include="base\D3DApp.cpp" />
+    <ClCompile Include="base\d3dUtil.cpp" />
+    <ClCompile Include="base\LightHelper.cpp" />
+    <ClCompile Include="base\MathHelper.cpp" />
     <ClCompile Include="CFGame.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -101,6 +111,10 @@
   <ItemGroup>
     <Image Include="CFGame.ico" />
     <Image Include="small.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="base\Effects11.lib" />
+    <Library Include="base\Effects11d.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
