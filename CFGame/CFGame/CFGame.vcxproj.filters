@@ -57,6 +57,12 @@
     <ClInclude Include="base\MathHelper.h">
       <Filter>app\base</Filter>
     </ClInclude>
+    <ClInclude Include="base\GameTimer.h">
+      <Filter>app\base</Filter>
+    </ClInclude>
+    <ClInclude Include="CFApp.h">
+      <Filter>app</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -79,6 +85,12 @@
     </ClCompile>
     <ClCompile Include="base\MathHelper.cpp">
       <Filter>app\base</Filter>
+    </ClCompile>
+    <ClCompile Include="base\GameTimer.cpp">
+      <Filter>app\base</Filter>
+    </ClCompile>
+    <ClCompile Include="CFApp.cpp">
+      <Filter>app</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

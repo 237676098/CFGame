@@ -86,8 +86,10 @@
     <ClInclude Include="base\D3DApp.h" />
     <ClInclude Include="base\d3dUtil.h" />
     <ClInclude Include="base\d3dx11effect.h" />
+    <ClInclude Include="base\GameTimer.h" />
     <ClInclude Include="base\LightHelper.h" />
     <ClInclude Include="base\MathHelper.h" />
+    <ClInclude Include="CFApp.h" />
     <ClInclude Include="CFGame.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -97,8 +99,10 @@
     <ClCompile Include="base\Camera.cpp" />
     <ClCompile Include="base\D3DApp.cpp" />
     <ClCompile Include="base\d3dUtil.cpp" />
+    <ClCompile Include="base\GameTimer.cpp" />
     <ClCompile Include="base\LightHelper.cpp" />
     <ClCompile Include="base\MathHelper.cpp" />
+    <ClCompile Include="CFApp.cpp" />
     <ClCompile Include="CFGame.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
