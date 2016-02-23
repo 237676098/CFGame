@@ -1,7 +1,7 @@
 #include "CFApp.h"
 
 
-CFApp::CFApp(HINSTANCE instance) :D3DApp(instance)
+CFApp::CFApp(HINSTANCE instance) :D3DApp(instance), mEffectTest(NULL)
 {
 
 }
@@ -17,6 +17,8 @@ bool CFApp::Init()
 	{
 		return false;
 	}
+
+	mEffectTest = new TestEffect(md3dDevice, L"fx / Basic.fx");
 
 	return true;
 }

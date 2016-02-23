@@ -22,6 +22,12 @@
     <Filter Include="app\shaders">
       <UniqueIdentifier>{8468231d-c755-4671-b10d-4690256057c0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="app\fx">
+      <UniqueIdentifier>{81344c50-401e-491c-aa32-8e4a176f2472}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\models">
+      <UniqueIdentifier>{022455ab-0a99-443c-a812-5fa1e737cd3c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -63,6 +69,18 @@
     <ClInclude Include="CFApp.h">
       <Filter>app</Filter>
     </ClInclude>
+    <ClInclude Include="models\Cube.h">
+      <Filter>app\models</Filter>
+    </ClInclude>
+    <ClInclude Include="models\BaseModel.h">
+      <Filter>app\models</Filter>
+    </ClInclude>
+    <ClInclude Include="base\BaseEffect.h">
+      <Filter>app\base</Filter>
+    </ClInclude>
+    <ClInclude Include="base\TestEffect.h">
+      <Filter>app\base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -92,6 +110,18 @@
     <ClCompile Include="CFApp.cpp">
       <Filter>app</Filter>
     </ClCompile>
+    <ClCompile Include="models\Cube.cpp">
+      <Filter>app\models</Filter>
+    </ClCompile>
+    <ClCompile Include="models\BaseModel.cpp">
+      <Filter>app\models</Filter>
+    </ClCompile>
+    <ClCompile Include="base\BaseEffect.cpp">
+      <Filter>app\base</Filter>
+    </ClCompile>
+    <ClCompile Include="base\TestEffect.cpp">
+      <Filter>app\base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CFGame.rc">
@@ -113,5 +143,13 @@
     <Library Include="base\Effects11d.lib">
       <Filter>app\base</Filter>
     </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="fx\Basic.fx">
+      <Filter>app\fx</Filter>
+    </FxCompile>
+    <FxCompile Include="fx\LightHelper.fx">
+      <Filter>app\fx</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>
