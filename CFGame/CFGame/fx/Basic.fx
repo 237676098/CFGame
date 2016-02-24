@@ -47,19 +47,22 @@ VertexOut VS(VertexIn vin)
 {
 	VertexOut vout;
 
-	vout.PosW = mul(float4(vin.PosL, 1.0f), gWorld);						//世界坐标
+	vout.PosW = mul(float4(vin.PosL, 1.0f), gWorld).xyz;						//世界坐标
 	vout.PosH = mul(float4(vin.PosL, 1.0f), gWorldViewProj);				//齐次坐标
-	vout.NormalW = mul(vin.NormalL, (float3x3)gWorldInvTranspose);		//世界坐标系的法向量
-	vout.Tex = vin.Tex;
+	//vout.NormalW = mul(vin.NormalL, (float3x3)gWorldInvTranspose);		//世界坐标系的法向量
+	//vout.Tex = vin.Tex;
 
+	vout.NormalW = float3(1.0f, 0.0f,0.0f);
+	vout.Tex = float2(1.0f, 0.0f);
 	return vout;
 }
 
 float4 PS(VertexOut pin) : SV_Target
 {
-	float texColor = gDiffuseMap.Sample(samAnisotropic, pin.Tex);
+	//float texColor = gDiffuseMap.Sample(samAnisotropic, pin.Tex);
 
-	return texColor;
+	//return texColor;
+	return float4(1.0f,1.0f,0.0f,1.0f);
 }
 
 technique11 Test

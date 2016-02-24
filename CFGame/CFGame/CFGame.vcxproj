@@ -88,6 +88,7 @@
     <ClInclude Include="base\d3dUtil.h" />
     <ClInclude Include="base\d3dx11effect.h" />
     <ClInclude Include="base\GameTimer.h" />
+    <ClInclude Include="base\GeometryGenerator.h" />
     <ClInclude Include="base\LightHelper.h" />
     <ClInclude Include="base\MathHelper.h" />
     <ClInclude Include="base\TestEffect.h" />
@@ -105,6 +106,7 @@
     <ClCompile Include="base\D3DApp.cpp" />
     <ClCompile Include="base\d3dUtil.cpp" />
     <ClCompile Include="base\GameTimer.cpp" />
+    <ClCompile Include="base\GeometryGenerator.cpp" />
     <ClCompile Include="base\LightHelper.cpp" />
     <ClCompile Include="base\MathHelper.cpp" />
     <ClCompile Include="base\TestEffect.cpp" />

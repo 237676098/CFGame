@@ -39,6 +39,16 @@ XMFLOAT3 Camera::GetPosition() const
 	return mPosition;
 }
 
+void Camera::SetPosition(float x, float y, float z)
+{
+	mPosition = XMFLOAT3(x, y, z);
+}
+
+void Camera::SetPosition(const XMFLOAT3 &pos)
+{
+	mPosition = pos;
+}
+
 XMVECTOR Camera::GetRightXM() const
 {
 	return XMLoadFloat3(&mRight);

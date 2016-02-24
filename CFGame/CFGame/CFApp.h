@@ -1,6 +1,8 @@
 #pragma once
 #include "D3DApp.h"
 #include "TestEffect.h"
+#include "Cube.h"
+#include "Camera.h"
 
 class CFApp : public D3DApp
 {
@@ -19,4 +21,6 @@ public:
 
 private:
 	TestEffect* mEffectTest;
+	Cube* mCube;
+	Camera mCam;
 };

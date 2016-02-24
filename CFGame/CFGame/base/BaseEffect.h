@@ -6,7 +6,6 @@ public:
 	BaseEffect(ID3D11Device* device, LPCWCHAR filename);
 	virtual ~BaseEffect();
 
-private:
+protected:
 	ID3DX11Effect* mFX;
-	ID3DX11EffectTechnique* mTech;
 };

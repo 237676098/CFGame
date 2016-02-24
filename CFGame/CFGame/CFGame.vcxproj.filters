@@ -81,6 +81,9 @@
     <ClInclude Include="base\TestEffect.h">
       <Filter>app\base</Filter>
     </ClInclude>
+    <ClInclude Include="base\GeometryGenerator.h">
+      <Filter>app\base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -120,6 +123,9 @@
       <Filter>app\base</Filter>
     </ClCompile>
     <ClCompile Include="base\TestEffect.cpp">
+      <Filter>app\base</Filter>
+    </ClCompile>
+    <ClCompile Include="base\GeometryGenerator.cpp">
       <Filter>app\base</Filter>
     </ClCompile>
   </ItemGroup>
