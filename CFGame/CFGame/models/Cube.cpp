@@ -77,13 +77,14 @@ void Cube::Draw(ID3D11DeviceContext* context, BaseEffect* effect, Camera* camera
 		XMMATRIX world = XMLoadFloat4x4(&mWorld);
 		XMMATRIX view = camera->View();
 		XMMATRIX proj = camera->Proj();
+		XMMATRIX worldViewProj = world*view*proj;
 		XMMATRIX invTranspose = MathHelper::InverseTranspose(world);
 
 
 
 
 		testE->SetWorld(world);
-		testE->SetWorldViewProj(world * view * proj);
+		testE->SetWorldViewProj(worldViewProj);
 		testE->SetWorldInvTranspose(invTranspose);
 		//testE->set
 		testE->getTestTech()->GetPassByIndex(p)->Apply(0, context);

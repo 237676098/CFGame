@@ -23,4 +23,5 @@ private:
 	TestEffect* mEffectTest;
 	Cube* mCube;
 	Camera mCam;
+	POINT mLastMousePos;
 };

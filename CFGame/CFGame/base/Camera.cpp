@@ -41,7 +41,7 @@ XMFLOAT3 Camera::GetPosition() const
 
 void Camera::SetPosition(float x, float y, float z)
 {
-	mPosition = XMFLOAT3(x, y, z);
+	mPosition = XMFLOAT3(x,y,z);
 }
 
 void Camera::SetPosition(const XMFLOAT3 &pos)
@@ -149,12 +149,27 @@ void Camera::LookAt(const XMFLOAT3 &pos, const XMFLOAT3 &target, const XMFLOAT3 
 
 void Camera::UpdateViewMatrix()
 {
-	//此处省略了对三个方向向量的规格化
+	XMVECTOR R = XMLoadFloat3(&mRight);
+	XMVECTOR U = XMLoadFloat3(&mUp);
+	XMVECTOR L = XMLoadFloat3(&mLook);
+	XMVECTOR P = XMLoadFloat3(&mPosition);
 
-	float x = -XMVectorGetX(XMVector3Dot(XMLoadFloat3(&mPosition), XMLoadFloat3(&mRight)));
-	float y = -XMVectorGetX(XMVector3Dot(XMLoadFloat3(&mPosition), XMLoadFloat3(&mUp)));
-	float z = -XMVectorGetX(XMVector3Dot(XMLoadFloat3(&mPosition), XMLoadFloat3(&mLook)));
-	
+	// Keep camera's axes orthogonal to each other and of unit length.
+	L = XMVector3Normalize(L);
+	U = XMVector3Normalize(XMVector3Cross(L, R));
+
+	// U, L already ortho-normal, so no need to normalize cross product.
+	R = XMVector3Cross(U, L);
+
+	// Fill in the view matrix entries.
+	float x = -XMVectorGetX(XMVector3Dot(P, R));
+	float y = -XMVectorGetX(XMVector3Dot(P, U));
+	float z = -XMVectorGetX(XMVector3Dot(P, L));
+
+	XMStoreFloat3(&mRight, R);
+	XMStoreFloat3(&mUp, U);
+	XMStoreFloat3(&mLook, L);
+
 	mView(0, 0) = mRight.x;
 	mView(1, 0) = mRight.y;
 	mView(2, 0) = mRight.z;
@@ -165,15 +180,15 @@ void Camera::UpdateViewMatrix()
 	mView(2, 1) = mUp.z;
 	mView(3, 1) = y;
 
-	mView(0, 1) = mLook.x;
-	mView(1, 1) = mLook.y;
-	mView(2, 1) = mLook.z;
-	mView(3, 1) = z;
+	mView(0, 2) = mLook.x;
+	mView(1, 2) = mLook.y;
+	mView(2, 2) = mLook.z;
+	mView(3, 2) = z;
 
-	mView(0, 1) = 0;
-	mView(1, 1) = 0;
-	mView(2, 1) = 0;
-	mView(3, 1) = 1;
+	mView(0, 3) = 0.0f;
+	mView(1, 3) = 0.0f;
+	mView(2, 3) = 0.0f;
+	mView(3, 3) = 1.0f;
 }
 
 XMMATRIX Camera::View() const
@@ -212,18 +227,23 @@ void Camera::Walk(float d)
 // Rotate up and look vector about the right vector.
 void Camera::Pitch(float angle)
 {
-	XMMATRIX R = XMMatrixRotationAxis(XMLoadFloat3(&mRight),angle);
+	// Rotate up and look vector about the right vector.
 
-	XMStoreFloat3(&mUp, XMVector2TransformNormal(XMLoadFloat3(&mUp),R));
-	XMStoreFloat3(&mLook, XMVector2TransformNormal(XMLoadFloat3(&mLook), R));
+	XMMATRIX R = XMMatrixRotationAxis(XMLoadFloat3(&mRight), angle);
+
+	XMStoreFloat3(&mUp, XMVector3TransformNormal(XMLoadFloat3(&mUp), R));
+	XMStoreFloat3(&mLook, XMVector3TransformNormal(XMLoadFloat3(&mLook), R));
 }
 
 // Rotate the basis vectors about the world y-axis.
 void Camera::RotateY(float angle)
 {
-	XMMATRIX R = XMMatrixRotationAxis(XMLoadFloat3(&mUp), angle);
+	// Rotate the basis vectors about the world y-axis.
 
-	XMStoreFloat3(&mRight, XMVector2TransformNormal(XMLoadFloat3(&mRight), R));
-	XMStoreFloat3(&mLook, XMVector2TransformNormal(XMLoadFloat3(&mLook), R));
+	XMMATRIX R = XMMatrixRotationY(angle);
+
+	XMStoreFloat3(&mRight, XMVector3TransformNormal(XMLoadFloat3(&mRight), R));
+	XMStoreFloat3(&mUp, XMVector3TransformNormal(XMLoadFloat3(&mUp), R));
+	XMStoreFloat3(&mLook, XMVector3TransformNormal(XMLoadFloat3(&mLook), R));
 }
 
