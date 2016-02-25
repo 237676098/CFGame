@@ -28,6 +28,11 @@ SamplerState samAnisotropic
 };
 
 
+RasterizerState NoCull
+{
+	CullMode = None;
+};
+
 struct VertexIn
 {
 	float3 PosL		:	POSITION;
@@ -99,5 +104,6 @@ technique11 Test
 		SetVertexShader(CompileShader(vs_5_0, VS()));
 		SetGeometryShader(NULL);
 		SetPixelShader(CompileShader(ps_5_0, PS()));
+		SetRasterizerState(NoCull);
 	}
 }

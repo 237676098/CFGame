@@ -28,7 +28,7 @@ void Cube::Init(ID3D11Device* device)
 {
 	GeometryGenerator gen;
 	GeometryGenerator::MeshData data;
-	gen.CreateBox(100.0f, 100.0f, 100.0f, data);
+	gen.CreateBox(400.0f, 400.0f, 400.0f, data);
 
 	std::vector<Vertex::TestVertex> vertices(data.Vertices.size());
 
@@ -68,6 +68,7 @@ void Cube::Init(ID3D11Device* device)
 		L"Textures/WoodCrate01.dds", 0, 0, &mTex, 0));
 
 	//XMMATRIX I = XMMatrixIdentity();
+	XMStoreFloat4x4(&mTexTran,XMMatrixScaling(5.0f, 5.0f, 1.0f));
 }
 
 
