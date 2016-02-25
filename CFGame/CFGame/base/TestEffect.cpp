@@ -17,9 +17,9 @@ TestEffect::TestEffect(ID3D11Device* device, LPCWCHAR filename) :BaseEffect(devi
 	mWorld = mFX->GetVariableByName("gWorld")->AsMatrix();
 	mWorldInvTranspose = mFX->GetVariableByName("gWorldInvTranspose")->AsMatrix();
 	mTexTransform = mFX->GetVariableByName("gTexTransform")->AsMatrix();
-	//mEyePosW = mFX->GetVariableByName("gEyePosW")->AsVector();
-	//mDirLights = mFX->GetVariableByName("gDirLights");
-	//mMat = mFX->GetVariableByName("gMaterial");
+	mEyePosW = mFX->GetVariableByName("gEyePosW")->AsVector();
+	mDirLights = mFX->GetVariableByName("gDirLights");
+	mMat = mFX->GetVariableByName("gMaterial");
 	mDiffuseMap = mFX->GetVariableByName("gDiffuseMap")->AsShaderResource();
 
 	// Create the input layout

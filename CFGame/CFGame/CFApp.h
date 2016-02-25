@@ -24,4 +24,5 @@ private:
 	Cube* mCube;
 	Camera mCam;
 	POINT mLastMousePos;
+	DirectionalLight mDirLights[3];
 };

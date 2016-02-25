@@ -6,6 +6,16 @@ Cube::Cube() :BaseModel(), mVB(0), mIB(0)
 {
 	XMMATRIX I = XMMatrixIdentity();
 	XMStoreFloat4x4(&mWorld, I);
+	XMStoreFloat4x4(&mTexTran, I);
+
+	/*mMat.Ambient = XMFLOAT4(0.5f, 0.5f, 0.0f, 1.0f);
+	mMat.Diffuse = XMFLOAT4(0.5f, 0.0f, 0.0f, 1.0f);
+	mMat.Specular = XMFLOAT4(0.2f, 0.2f, 0.2f, 16.0f);
+	mMat.Reflect = XMFLOAT4(0.0f, 0.0f, 0.0f, 0.0f);*/
+
+	mMat.Ambient = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
+	mMat.Diffuse = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
+	mMat.Specular = XMFLOAT4(0.8f, 0.8f, 0.8f, 16.0f);
 }
 
 Cube::~Cube()
@@ -51,10 +61,17 @@ void Cube::Init(ID3D11Device* device)
 	D3D11_SUBRESOURCE_DATA iinitData;
 	iinitData.pSysMem = &data.Indices[0];
 	HR(device->CreateBuffer(&ibd, &iinitData, &mIB));
+	
 
+	//¼ÓÔØÎÆÀí
+	HR(D3DX11CreateShaderResourceViewFromFile(device,
+		L"Textures/WoodCrate01.dds", 0, 0, &mTex, 0));
+
+	//XMMATRIX I = XMMatrixIdentity();
 }
 
-void Cube::Draw(ID3D11DeviceContext* context, BaseEffect* effect, Camera* camera)
+
+void Cube::Draw(ID3D11DeviceContext* context, BaseEffect* effect, Camera* camera, DirectionalLight* lightArr, XMFLOAT3& eyePos)
 {
 	context->IASetInputLayout(TestEffect::InputLayout);
 	context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
@@ -86,9 +103,12 @@ void Cube::Draw(ID3D11DeviceContext* context, BaseEffect* effect, Camera* camera
 		testE->SetWorld(world);
 		testE->SetWorldViewProj(worldViewProj);
 		testE->SetWorldInvTranspose(invTranspose);
-		//testE->set
+		testE->SetMaterial(mMat);
 		testE->getTestTech()->GetPassByIndex(p)->Apply(0, context);
-
+		testE->SetEyePosW(eyePos);
+		testE->SetDirLights(lightArr);
+		testE->SetDiffuseMap(mTex);
+		testE->SetTexTransform(XMLoadFloat4x4(&mTexTran));
 		// 36 indices for the box.
 		context->DrawIndexed(mIndexCount, 0, 0);
 	}

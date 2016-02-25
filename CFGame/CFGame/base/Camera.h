@@ -49,7 +49,6 @@ public:
 	void Pitch(float angle);
 	void RotateY(float angle);
 
-
 private:
 	//视图坐标相对于世界坐标系的元素(决定了摄像机的位置)
 	XMFLOAT3 mPosition;

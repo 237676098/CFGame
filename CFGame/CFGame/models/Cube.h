@@ -1,6 +1,6 @@
 #pragma once
 #include "BaseModel.h"
-//#include "Camera.h"
+#include "LightHelper.h"
 
 class Cube :public BaseModel
 {
@@ -11,7 +11,7 @@ public:
 	void Init(ID3D11Device* device);
 
 public:
-	void Draw(ID3D11DeviceContext* context, BaseEffect* effect, Camera* Camera);
+	void Draw(ID3D11DeviceContext* context, BaseEffect* effect, Camera* Camera, DirectionalLight* lightArr, XMFLOAT3& eyePos);
 
 private:
 	ID3D11Buffer* mVB;			
@@ -21,5 +21,8 @@ private:
 
 	ID3D11ShaderResourceView* mTex;
 	XMFLOAT4X4 mWorld;
+	Material mMat;
+
+	XMFLOAT4X4 mTexTran;
 
 };
